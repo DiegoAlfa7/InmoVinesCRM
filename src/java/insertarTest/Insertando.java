@@ -5,10 +5,10 @@
  */
 package insertarTest;
 
-import entities.Caracteristicas;
-import entities.Direccion;
-import entities.Inmuebles;
-import entities.Localizacion;
+import entities.inmueble.Caracteristicas;
+import entities.inmueble.Direccion;
+import entities.inmueble.Inmuebles;
+import entities.inmueble.Localizacion;
 import org.hibernate.Session;
 import hibernateUtil.NewHibernateUtil;
 import org.hibernate.Transaction;
