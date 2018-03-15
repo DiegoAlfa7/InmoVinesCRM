@@ -64,9 +64,10 @@ public class Clientes implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Long id;
-    private String nombre;
-    private String apellidos;
-    private String mail;
+    
+    private DatosPersonales datosPersonales;
+    
+    
     @Basic(optional = false)
     private boolean inquilino;
     @Basic(optional = false)
@@ -75,11 +76,7 @@ public class Clientes implements Serializable {
     private boolean comprador;
     @Basic(optional = false)
     private boolean vendedor;
-    private String telefono;
-    @Column(name = "telefono_1")
-    private String telefono1;
-    @Column(name = "mail_1")
-    private String mail1;
+    
     @Lob
     private String comentarios;
     @Column(name = "fecha_entrada")
@@ -89,11 +86,9 @@ public class Clientes implements Serializable {
     private BigInteger presupuestoMin;
     @Column(name = "presupuesto_max")
     private BigInteger presupuestoMax;
-    private String dni;
     @Column(name = "canal_entrada")
     private Short canalEntrada;
-    private String nacionalidad;
-    private Integer edad;
+    
     @JoinColumn(name = "id_agente", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Agentes idAgente;
@@ -127,33 +122,33 @@ public class Clientes implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public String getNombre() {
+//        return nombre;
+//    }
+//
+//    public void setNombre(String nombre) {
+//        this.nombre = nombre;
+//    }
+//
+//    public String getApellidos() {
+//        return apellidos;
+//    }
+//
+//    public void setApellidos(String apellidos) {
+//        this.apellidos = apellidos;
+//    }
+//
+//    public String getMail() {
+//        return mail;
+//    }
+//
+//    public void setMail(String mail) {
+//        this.mail = mail;
+//    }
 
     public boolean getInquilino() {
         return inquilino;
@@ -187,29 +182,29 @@ public class Clientes implements Serializable {
         this.vendedor = vendedor;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getTelefono1() {
-        return telefono1;
-    }
-
-    public void setTelefono1(String telefono1) {
-        this.telefono1 = telefono1;
-    }
-
-    public String getMail1() {
-        return mail1;
-    }
-
-    public void setMail1(String mail1) {
-        this.mail1 = mail1;
-    }
+//    public String getTelefono() {
+//        return telefono;
+//    }
+//
+//    public void setTelefono(String telefono) {
+//        this.telefono = telefono;
+//    }
+//
+//    public String getTelefono1() {
+//        return telefono1;
+//    }
+//
+//    public void setTelefono1(String telefono1) {
+//        this.telefono1 = telefono1;
+//    }
+//
+//    public String getMail1() {
+//        return mail1;
+//    }
+//
+//    public void setMail1(String mail1) {
+//        this.mail1 = mail1;
+//    }
 
     public String getComentarios() {
         return comentarios;
@@ -243,13 +238,13 @@ public class Clientes implements Serializable {
         this.presupuestoMax = presupuestoMax;
     }
 
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
+//    public String getDni() {
+//        return dni;
+//    }
+//
+//    public void setDni(String dni) {
+//        this.dni = dni;
+//    }
 
     public Short getCanalEntrada() {
         return canalEntrada;
@@ -259,21 +254,21 @@ public class Clientes implements Serializable {
         this.canalEntrada = canalEntrada;
     }
 
-    public String getNacionalidad() {
-        return nacionalidad;
-    }
-
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
-
-    public Integer getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
+//    public String getNacionalidad() {
+//        return nacionalidad;
+//    }
+//
+//    public void setNacionalidad(String nacionalidad) {
+//        this.nacionalidad = nacionalidad;
+//    }
+//
+//    public Integer getEdad() {
+//        return edad;
+//    }
+//
+//    public void setEdad(Integer edad) {
+//        this.edad = edad;
+//    }
 
     public Agentes getIdAgente() {
         return idAgente;
