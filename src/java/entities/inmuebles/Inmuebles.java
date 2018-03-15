@@ -130,6 +130,8 @@ public class Inmuebles implements Serializable {
 
     @Embedded
     private Localizacion localizacion;
+    
+  
 
     public Inmuebles() {
     }
