@@ -35,8 +35,6 @@ public class Insertando {
 
         Localizacion localizacion = new Localizacion();
 
-        localizacion.setPais("ESPAÑA");
-
         localizacion.setDireccion(direccion);
 
         Session session = NewHibernateUtil.getSessionFactory().openSession();
@@ -47,9 +45,9 @@ public class Insertando {
         inmuebles.setLocalizacion(localizacion);
         inmuebles.setTextoReclamo("ME LO QUITAN DE LAS MANOS XD");
         inmuebles.setDescripcion("Gracias a este edificio nos van a dar un 10 jajajajajjj");
-        
+
         session.save(inmuebles);
-        
+
         transaction.commit();
 
     }

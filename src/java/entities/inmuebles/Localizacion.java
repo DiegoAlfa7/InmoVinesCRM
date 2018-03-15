@@ -22,18 +22,23 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class Localizacion {
 
-   
-
+    /**
+     * ***********************************ID COMUNIDAD ID MUNICIPIOS ID PROVINCIA*****************************************
+     */
     @JoinColumn(name = "id_comunidad", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Comunidades comunidad;
     @JoinColumn(name = "id_municipios", referencedColumnName = "ID")
     @ManyToOne
     private Municipios municipio;
-    
+
     @JoinColumn(name = "id_provincia", referencedColumnName = "ID")
     @ManyToOne
     private Provincias provincia;
+
+    /**
+     * *****************************CARACTERÍSTICAS DE LA ZONA******************************************
+     */
     @JoinColumn(name = "id_zona", referencedColumnName = "id")
     @ManyToOne
     private Zonas zona;
@@ -43,6 +48,10 @@ public class Localizacion {
     private float latitud;
     @Column(name = "longitud")
     private float longitud;
+
+    /**
+     * ******************************OBJETO DIRECCIÓN*****************************************
+     */
     @Embedded
     private Direccion direccion;
 
@@ -50,7 +59,7 @@ public class Localizacion {
     }
 
     public Localizacion(Provincias provincia, Municipios municipio, Zonas zona, int cp, float latitud, float longitud, Direccion direccion) {
-       
+
         this.provincia = provincia;
         this.municipio = municipio;
         this.zona = zona;
@@ -59,7 +68,6 @@ public class Localizacion {
         this.longitud = longitud;
         this.direccion = direccion;
     }
-
 
     public Provincias getProvincia() {
         return provincia;
@@ -83,6 +91,14 @@ public class Localizacion {
 
     public void setZona(Zonas zona) {
         this.zona = zona;
+    }
+
+    public Comunidades getComunidad() {
+        return comunidad;
+    }
+
+    public void setComunidad(Comunidades comunidad) {
+        this.comunidad = comunidad;
     }
 
     public int getCp() {

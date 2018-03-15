@@ -7,15 +7,11 @@ package entities.inmuebles;
 
 import entities.agentes.Agentes;
 import entities.clientes.Clientes;
-import entities.Comunidades;
-import entities.Municipios;
-import entities.Provincias;
-import entities.Zonas;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,8 +22,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -96,6 +90,11 @@ public class Inmuebles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    /**
+     * ********************************CARÁCTERISTICAS PROPIAS DE
+     * INMUEBLE***************************************
+     */
     @Basic(optional = false)
     private Long id;
     @Column(name = "referencia_catastral")
@@ -109,9 +108,6 @@ public class Inmuebles implements Serializable {
     private Integer gastosComunidad;
     @Column(name = "altura_edificio")
     private Short alturaEdificio;
-    
-   
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio_compra")
     private Double precioCompra;
     @Column(name = "precio_alquiler")
@@ -120,55 +116,6 @@ public class Inmuebles implements Serializable {
     private Double precioTraspaso;
     @Column(name = "precio_alquiler_opcion_compra")
     private Double precioAlquilerOpcionCompra;
-    @Column(name = "n_habitaciones")
-    private Short nHabitaciones;
-    @Column(name = "n_banos")
-    private Short nBanos;
-    @Column(name = "n_aseos")
-    private Short nAseos;
-    @Column(name = "m2_utiles")
-    private Double m2Utiles;
-    @Column(name = "m2_construidos")
-    private Float m2Construidos;
-    @Column(name = "m2_terreno")
-    private Double m2Terreno;
-    @Basic(optional = false)
-    @Column(name = "estado_conservacion")
-    private String estadoConservacion;
-    private Boolean visible;
-    @Column(name = "zona_deportiva")
-    private Boolean zonaDeportiva;
-    private Boolean amueblado;
-    private Boolean garaje;
-    private Boolean calefaccion;
-    @Column(name = "aire_acondicionado")
-    private Boolean aireAcondicionado;
-    private Boolean piscina;
-    private Boolean jardin;
-    private Boolean trastero;
-    private Boolean ascensor;
-    private Boolean terraza;
-    @Column(name = "piso_banco")
-    private Boolean pisoBanco;
-    private Boolean vpo;
-    private Boolean reservado;
-    @Column(name = "eficiencia_energetica_tipo")
-    private String eficienciaEnergeticaTipo;
-    @Basic(optional = false)
-    @Column(name = "eficiencia_energetica_entramite_01")
-    private boolean eficienciaEnergeticaEntramite01;
-    @Column(name = "eficiencia_energetica_fecvalid")
-    @Temporal(TemporalType.DATE)
-    private Date eficienciaEnergeticaFecvalid;
-    @Column(name = "eficiencia_energetica_emisiones")
-    private Float eficienciaEnergeticaEmisiones;
-    @Column(name = "orientacion_solar")
-    private String orientacionSolar;
-    private String suelos;
-    @Column(name = "carpinteria_exterior")
-    private String carpinteriaExterior;
-    @Column(name = "carpinteria_interior")
-    private String carpinteriaInterior;
     @OneToMany(mappedBy = "idInmuebleInteres")
     private List<Clientes> clientesList;
     @JoinColumn(name = "id_agente", referencedColumnName = "id")
@@ -177,19 +124,18 @@ public class Inmuebles implements Serializable {
     @JoinColumn(name = "id_cliente_propietario", referencedColumnName = "id")
     @ManyToOne
     private Clientes idClientePropietario;
-    
+
+    @Embedded
+    private Caracteristicas caracteristicas;
+
+    @Embedded
+    private Localizacion localizacion;
 
     public Inmuebles() {
     }
 
     public Inmuebles(Long id) {
         this.id = id;
-    }
-
-    public Inmuebles(Long id, String estadoConservacion, boolean eficienciaEnergeticaEntramite01) {
-        this.id = id;
-        this.estadoConservacion = estadoConservacion;
-        this.eficienciaEnergeticaEntramite01 = eficienciaEnergeticaEntramite01;
     }
 
     public Long getId() {
@@ -256,86 +202,6 @@ public class Inmuebles implements Serializable {
         this.alturaEdificio = alturaEdificio;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getCp() {
-        return cp;
-    }
-
-    public void setCp(String cp) {
-        this.cp = cp;
-    }
-
-    public String getLatitud() {
-        return latitud;
-    }
-
-    public void setLatitud(String latitud) {
-        this.latitud = latitud;
-    }
-
-    public String getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(String longitud) {
-        this.longitud = longitud;
-    }
-
-    public String getDireccionTipoVia() {
-        return direccionTipoVia;
-    }
-
-    public void setDireccionTipoVia(String direccionTipoVia) {
-        this.direccionTipoVia = direccionTipoVia;
-    }
-
-    public String getDireccionCalle() {
-        return direccionCalle;
-    }
-
-    public void setDireccionCalle(String direccionCalle) {
-        this.direccionCalle = direccionCalle;
-    }
-
-    public String getDireccionNumero() {
-        return direccionNumero;
-    }
-
-    public void setDireccionNumero(String direccionNumero) {
-        this.direccionNumero = direccionNumero;
-    }
-
-    public String getDireccionPiso() {
-        return direccionPiso;
-    }
-
-    public void setDireccionPiso(String direccionPiso) {
-        this.direccionPiso = direccionPiso;
-    }
-
-    public String getDireccionLetra() {
-        return direccionLetra;
-    }
-
-    public void setDireccionLetra(String direccionLetra) {
-        this.direccionLetra = direccionLetra;
-    }
-
-    public String getDireccionEscalera() {
-        return direccionEscalera;
-    }
-
-    public void setDireccionEscalera(String direccionEscalera) {
-        this.direccionEscalera = direccionEscalera;
-    }
-
     public Double getPrecioCompra() {
         return precioCompra;
     }
@@ -368,236 +234,20 @@ public class Inmuebles implements Serializable {
         this.precioAlquilerOpcionCompra = precioAlquilerOpcionCompra;
     }
 
-    public Short getNHabitaciones() {
-        return nHabitaciones;
+    public Caracteristicas getCaracteristicas() {
+        return caracteristicas;
     }
 
-    public void setNHabitaciones(Short nHabitaciones) {
-        this.nHabitaciones = nHabitaciones;
+    public void setCaracteristicas(Caracteristicas caracteristicas) {
+        this.caracteristicas = caracteristicas;
     }
 
-    public Short getNBanos() {
-        return nBanos;
+    public Localizacion getLocalizacion() {
+        return localizacion;
     }
 
-    public void setNBanos(Short nBanos) {
-        this.nBanos = nBanos;
-    }
-
-    public Short getNAseos() {
-        return nAseos;
-    }
-
-    public void setNAseos(Short nAseos) {
-        this.nAseos = nAseos;
-    }
-
-    public Double getM2Utiles() {
-        return m2Utiles;
-    }
-
-    public void setM2Utiles(Double m2Utiles) {
-        this.m2Utiles = m2Utiles;
-    }
-
-    public Float getM2Construidos() {
-        return m2Construidos;
-    }
-
-    public void setM2Construidos(Float m2Construidos) {
-        this.m2Construidos = m2Construidos;
-    }
-
-    public Double getM2Terreno() {
-        return m2Terreno;
-    }
-
-    public void setM2Terreno(Double m2Terreno) {
-        this.m2Terreno = m2Terreno;
-    }
-
-    public String getEstadoConservacion() {
-        return estadoConservacion;
-    }
-
-    public void setEstadoConservacion(String estadoConservacion) {
-        this.estadoConservacion = estadoConservacion;
-    }
-
-    public Boolean getVisible() {
-        return visible;
-    }
-
-    public void setVisible(Boolean visible) {
-        this.visible = visible;
-    }
-
-    public Boolean getZonaDeportiva() {
-        return zonaDeportiva;
-    }
-
-    public void setZonaDeportiva(Boolean zonaDeportiva) {
-        this.zonaDeportiva = zonaDeportiva;
-    }
-
-    public Boolean getAmueblado() {
-        return amueblado;
-    }
-
-    public void setAmueblado(Boolean amueblado) {
-        this.amueblado = amueblado;
-    }
-
-    public Boolean getGaraje() {
-        return garaje;
-    }
-
-    public void setGaraje(Boolean garaje) {
-        this.garaje = garaje;
-    }
-
-    public Boolean getCalefaccion() {
-        return calefaccion;
-    }
-
-    public void setCalefaccion(Boolean calefaccion) {
-        this.calefaccion = calefaccion;
-    }
-
-    public Boolean getAireAcondicionado() {
-        return aireAcondicionado;
-    }
-
-    public void setAireAcondicionado(Boolean aireAcondicionado) {
-        this.aireAcondicionado = aireAcondicionado;
-    }
-
-    public Boolean getPiscina() {
-        return piscina;
-    }
-
-    public void setPiscina(Boolean piscina) {
-        this.piscina = piscina;
-    }
-
-    public Boolean getJardin() {
-        return jardin;
-    }
-
-    public void setJardin(Boolean jardin) {
-        this.jardin = jardin;
-    }
-
-    public Boolean getTrastero() {
-        return trastero;
-    }
-
-    public void setTrastero(Boolean trastero) {
-        this.trastero = trastero;
-    }
-
-    public Boolean getAscensor() {
-        return ascensor;
-    }
-
-    public void setAscensor(Boolean ascensor) {
-        this.ascensor = ascensor;
-    }
-
-    public Boolean getTerraza() {
-        return terraza;
-    }
-
-    public void setTerraza(Boolean terraza) {
-        this.terraza = terraza;
-    }
-
-    public Boolean getPisoBanco() {
-        return pisoBanco;
-    }
-
-    public void setPisoBanco(Boolean pisoBanco) {
-        this.pisoBanco = pisoBanco;
-    }
-
-    public Boolean getVpo() {
-        return vpo;
-    }
-
-    public void setVpo(Boolean vpo) {
-        this.vpo = vpo;
-    }
-
-    public Boolean getReservado() {
-        return reservado;
-    }
-
-    public void setReservado(Boolean reservado) {
-        this.reservado = reservado;
-    }
-
-    public String getEficienciaEnergeticaTipo() {
-        return eficienciaEnergeticaTipo;
-    }
-
-    public void setEficienciaEnergeticaTipo(String eficienciaEnergeticaTipo) {
-        this.eficienciaEnergeticaTipo = eficienciaEnergeticaTipo;
-    }
-
-    public boolean getEficienciaEnergeticaEntramite01() {
-        return eficienciaEnergeticaEntramite01;
-    }
-
-    public void setEficienciaEnergeticaEntramite01(boolean eficienciaEnergeticaEntramite01) {
-        this.eficienciaEnergeticaEntramite01 = eficienciaEnergeticaEntramite01;
-    }
-
-    public Date getEficienciaEnergeticaFecvalid() {
-        return eficienciaEnergeticaFecvalid;
-    }
-
-    public void setEficienciaEnergeticaFecvalid(Date eficienciaEnergeticaFecvalid) {
-        this.eficienciaEnergeticaFecvalid = eficienciaEnergeticaFecvalid;
-    }
-
-    public Float getEficienciaEnergeticaEmisiones() {
-        return eficienciaEnergeticaEmisiones;
-    }
-
-    public void setEficienciaEnergeticaEmisiones(Float eficienciaEnergeticaEmisiones) {
-        this.eficienciaEnergeticaEmisiones = eficienciaEnergeticaEmisiones;
-    }
-
-    public String getOrientacionSolar() {
-        return orientacionSolar;
-    }
-
-    public void setOrientacionSolar(String orientacionSolar) {
-        this.orientacionSolar = orientacionSolar;
-    }
-
-    public String getSuelos() {
-        return suelos;
-    }
-
-    public void setSuelos(String suelos) {
-        this.suelos = suelos;
-    }
-
-    public String getCarpinteriaExterior() {
-        return carpinteriaExterior;
-    }
-
-    public void setCarpinteriaExterior(String carpinteriaExterior) {
-        this.carpinteriaExterior = carpinteriaExterior;
-    }
-
-    public String getCarpinteriaInterior() {
-        return carpinteriaInterior;
-    }
-
-    public void setCarpinteriaInterior(String carpinteriaInterior) {
-        this.carpinteriaInterior = carpinteriaInterior;
+    public void setLocalizacion(Localizacion localizacion) {
+        this.localizacion = localizacion;
     }
 
     @XmlTransient
@@ -617,44 +267,12 @@ public class Inmuebles implements Serializable {
         this.idAgente = idAgente;
     }
 
-    public Comunidades getIdComunidad() {
-        return idComunidad;
-    }
-
-    public void setIdComunidad(Comunidades idComunidad) {
-        this.idComunidad = idComunidad;
-    }
-
-    public Municipios getIdMunicipios() {
-        return idMunicipios;
-    }
-
-    public void setIdMunicipios(Municipios idMunicipios) {
-        this.idMunicipios = idMunicipios;
-    }
-
     public Clientes getIdClientePropietario() {
         return idClientePropietario;
     }
 
     public void setIdClientePropietario(Clientes idClientePropietario) {
         this.idClientePropietario = idClientePropietario;
-    }
-
-    public Provincias getIdProvincia() {
-        return idProvincia;
-    }
-
-    public void setIdProvincia(Provincias idProvincia) {
-        this.idProvincia = idProvincia;
-    }
-
-    public Zonas getIdZona() {
-        return idZona;
-    }
-
-    public void setIdZona(Zonas idZona) {
-        this.idZona = idZona;
     }
 
     @Override
@@ -681,5 +299,5 @@ public class Inmuebles implements Serializable {
     public String toString() {
         return "entities.cliente.Inmuebles[ id=" + id + " ]";
     }
-    
+
 }

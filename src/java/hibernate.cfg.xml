@@ -48,9 +48,9 @@ Contributor(s):
     <property name="hibernate.connection.password">melocoton</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
     <property name="hibernate.show_sql">true</property>
-    <mapping class="entities.Caracteristicas" package="entities"/>
-    <mapping class="entities.Direccion" package="entities"/>
-    <mapping class="entities.Inmuebles" package="entities"/>
-    <mapping class="entities.Localizacion" package="entities"/>
+    <mapping class="entities.Caracteristicas" package="entities.inmuebles"/>
+    <mapping class="entities.Direccion" package="entities.inmuebles"/>
+    <mapping class="entities.Inmuebles" package="entities.inmuebles"/>
+    <mapping class="entities.Localizacion" package="entities.inmuebles"/>
   </session-factory>
 </hibernate-configuration>

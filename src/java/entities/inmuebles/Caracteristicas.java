@@ -18,6 +18,8 @@ import javax.persistence.TemporalType;
  */
 @Embeddable
 public class Caracteristicas {
+    
+    /************************************CARACTERÍSTICAS A PARTE**************************************/
 
     @Column(name = "n_habitaciones")
     private Short nHabitaciones;
