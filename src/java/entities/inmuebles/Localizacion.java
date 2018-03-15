@@ -5,9 +5,15 @@
  */
 package entities.inmuebles;
 
+import entities.Comunidades;
+import entities.Municipios;
+import entities.Provincias;
+import entities.Zonas;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -16,30 +22,37 @@ import javax.persistence.Embedded;
 @Embeddable
 public class Localizacion {
 
-    @Column(name = "pais")
-    private String pais;
-    @Column(name = "provincia")
-    private String provincia;
-    @Column(name = "poblacion")
-    private String poblacion;
-    @Column(name = "zona")
-    private String zona;
+   
+
+    @JoinColumn(name = "id_comunidad", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Comunidades comunidad;
+    @JoinColumn(name = "id_municipios", referencedColumnName = "ID")
+    @ManyToOne
+    private Municipios municipio;
+    
+    @JoinColumn(name = "id_provincia", referencedColumnName = "ID")
+    @ManyToOne
+    private Provincias provincia;
+    @JoinColumn(name = "id_zona", referencedColumnName = "id")
+    @ManyToOne
+    private Zonas zona;
     @Column(name = "cp")
-    private String cp;
+    private int cp;
     @Column(name = "latitud")
-    private String latitud;
+    private float latitud;
     @Column(name = "longitud")
-    private String longitud;
+    private float longitud;
     @Embedded
     private Direccion direccion;
 
     public Localizacion() {
     }
 
-    public Localizacion(String pais, String provincia, String poblacion, String zona, String cp, String latitud, String longitud, Direccion direccion) {
-        this.pais = pais;
+    public Localizacion(Provincias provincia, Municipios municipio, Zonas zona, int cp, float latitud, float longitud, Direccion direccion) {
+       
         this.provincia = provincia;
-        this.poblacion = poblacion;
+        this.municipio = municipio;
         this.zona = zona;
         this.cp = cp;
         this.latitud = latitud;
@@ -47,59 +60,52 @@ public class Localizacion {
         this.direccion = direccion;
     }
 
-    public String getPais() {
-        return pais;
-    }
 
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getProvincia() {
+    public Provincias getProvincia() {
         return provincia;
     }
 
-    public void setProvincia(String provincia) {
+    public void setProvincia(Provincias provincia) {
         this.provincia = provincia;
     }
 
-    public String getPoblacion() {
-        return poblacion;
+    public Municipios getPoblacion() {
+        return municipio;
     }
 
-    public void setPoblacion(String poblacion) {
-        this.poblacion = poblacion;
+    public void setMunicipio(Municipios municipio) {
+        this.municipio = municipio;
     }
 
-    public String getZona() {
+    public Zonas getZona() {
         return zona;
     }
 
-    public void setZona(String zona) {
+    public void setZona(Zonas zona) {
         this.zona = zona;
     }
 
-    public String getCp() {
+    public int getCp() {
         return cp;
     }
 
-    public void setCp(String cp) {
+    public void setCp(int cp) {
         this.cp = cp;
     }
 
-    public String getLatitud() {
+    public float getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(String latitud) {
+    public void setLatitud(float latitud) {
         this.latitud = latitud;
     }
 
-    public String getLongitud() {
+    public float getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(String longitud) {
+    public void setLongitud(float longitud) {
         this.longitud = longitud;
     }
 

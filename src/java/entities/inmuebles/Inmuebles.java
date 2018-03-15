@@ -109,22 +109,8 @@ public class Inmuebles implements Serializable {
     private Integer gastosComunidad;
     @Column(name = "altura_edificio")
     private Short alturaEdificio;
-    private String pais;
-    private String cp;
-    private String latitud;
-    private String longitud;
-    @Column(name = "direccion_tipo_via")
-    private String direccionTipoVia;
-    @Column(name = "direccion_calle")
-    private String direccionCalle;
-    @Column(name = "direccion_numero")
-    private String direccionNumero;
-    @Column(name = "direccion_piso")
-    private String direccionPiso;
-    @Column(name = "direccion_letra")
-    private String direccionLetra;
-    @Column(name = "direccion_escalera")
-    private String direccionEscalera;
+    
+   
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio_compra")
     private Double precioCompra;
@@ -188,21 +174,10 @@ public class Inmuebles implements Serializable {
     @JoinColumn(name = "id_agente", referencedColumnName = "id")
     @ManyToOne
     private Agentes idAgente;
-    @JoinColumn(name = "id_comunidad", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Comunidades idComunidad;
-    @JoinColumn(name = "id_municipios", referencedColumnName = "ID")
-    @ManyToOne
-    private Municipios idMunicipios;
     @JoinColumn(name = "id_cliente_propietario", referencedColumnName = "id")
     @ManyToOne
     private Clientes idClientePropietario;
-    @JoinColumn(name = "id_provincia", referencedColumnName = "ID")
-    @ManyToOne
-    private Provincias idProvincia;
-    @JoinColumn(name = "id_zona", referencedColumnName = "id")
-    @ManyToOne
-    private Zonas idZona;
+    
 
     public Inmuebles() {
     }
