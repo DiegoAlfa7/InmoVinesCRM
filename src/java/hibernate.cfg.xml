@@ -48,17 +48,22 @@ Contributor(s):
         <property name="hibernate.connection.password">melocoton</property>
         <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
         <property name="hibernate.show_sql">true</property>
-        <mapping class="entities.inmuebles.Caracteristicas" package="entities.inmuebles"/>
-        <mapping class="entities.inmuebles.Direccion" package="entities.inmuebles"/>
-        <mapping class="entities.inmuebles.Inmuebles" package="entities.inmuebles"/>
-        <mapping class="entities.inmuebles.Localizacion" package="entities.inmuebles"/>
+        <!-- ENTITIES MAPPING -->
         <mapping class="entities.Comunidades" package="entities"/>
         <mapping class="entities.Municipios" package="entities"/>
         <mapping class="entities.Provincias" package="entities"/>
         <mapping class="entities.Zonas" package="entities"/>
+        <!-- ENTITIES.AGENTES MAPPING -->
         <mapping class="entities.agentes.Agentes" package="entities.agentes"/>
         <mapping class="entities.agentes.Cargos" package="entities.agentes"/>
+        <!-- ENTITIES.CLIENTES MAPPING -->
         <mapping class="entities.clientes.Clientes" package="entities.clientes"/>
-        
+        <mapping class="entities.clientes.DatosPersonales" package="entities.clientes"/>
+        <mapping class="entities.clientes.Intereses" package="entities.clientes"/>
+        <!-- ENTITIES.INMUEBLES MAPPING -->
+        <mapping class="entities.inmuebles.Caracteristicas" package="entities.inmuebles"/>
+        <mapping class="entities.inmuebles.Direccion" package="entities.inmuebles"/>
+        <mapping class="entities.inmuebles.Inmuebles" package="entities.inmuebles"/>
+        <mapping class="entities.inmuebles.Localizacion" package="entities.inmuebles"/>
     </session-factory>
 </hibernate-configuration>
