@@ -5,6 +5,9 @@
  */
 package insertarTest;
 
+import entities.Comunidades;
+import entities.Municipios;
+import entities.Provincias;
 import entities.inmuebles.Caracteristicas;
 import entities.inmuebles.Direccion;
 import entities.inmuebles.Inmuebles;
@@ -34,17 +37,23 @@ public class Insertando {
         caracteristicas.setEstadoConservacion("ok");
 
         Localizacion localizacion = new Localizacion();
+        Comunidades comunidades = new Comunidades(Long.valueOf(19));
+        Municipios municipios = new Municipios(Long.valueOf(4));
+        Provincias provincias = new Provincias(Long.valueOf(3));
 
         localizacion.setDireccion(direccion);
-
-        Session session = NewHibernateUtil.getSessionFactory().openSession();
-
-        Transaction transaction = session.beginTransaction();
+        localizacion.setComunidad(comunidades);
+        localizacion.setMunicipio(municipios);
+        localizacion.setProvincia(provincias);
 
         inmuebles.setCaracteristicas(caracteristicas);
         inmuebles.setLocalizacion(localizacion);
         inmuebles.setTextoReclamo("ME LO QUITAN DE LAS MANOS XD");
         inmuebles.setDescripcion("Gracias a este edificio nos van a dar un 10 jajajajajjj");
+
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+
+        Transaction transaction = session.beginTransaction();
 
         session.save(inmuebles);
 

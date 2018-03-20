@@ -44,7 +44,7 @@ public class Comunidades implements Serializable {
     private String slug;
     @Basic(optional = false)
     private String comunidad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idComunidad")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Inmuebles> inmueblesList;
 
     public Comunidades() {

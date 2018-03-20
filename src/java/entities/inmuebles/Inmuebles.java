@@ -42,59 +42,17 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Inmuebles.findByTextoReclamo", query = "SELECT i FROM Inmuebles i WHERE i.textoReclamo = :textoReclamo")
     , @NamedQuery(name = "Inmuebles.findByGastosComunidad", query = "SELECT i FROM Inmuebles i WHERE i.gastosComunidad = :gastosComunidad")
     , @NamedQuery(name = "Inmuebles.findByAlturaEdificio", query = "SELECT i FROM Inmuebles i WHERE i.alturaEdificio = :alturaEdificio")
-    , @NamedQuery(name = "Inmuebles.findByPais", query = "SELECT i FROM Inmuebles i WHERE i.pais = :pais")
-    , @NamedQuery(name = "Inmuebles.findByCp", query = "SELECT i FROM Inmuebles i WHERE i.cp = :cp")
-    , @NamedQuery(name = "Inmuebles.findByLatitud", query = "SELECT i FROM Inmuebles i WHERE i.latitud = :latitud")
-    , @NamedQuery(name = "Inmuebles.findByLongitud", query = "SELECT i FROM Inmuebles i WHERE i.longitud = :longitud")
-    , @NamedQuery(name = "Inmuebles.findByDireccionTipoVia", query = "SELECT i FROM Inmuebles i WHERE i.direccionTipoVia = :direccionTipoVia")
-    , @NamedQuery(name = "Inmuebles.findByDireccionCalle", query = "SELECT i FROM Inmuebles i WHERE i.direccionCalle = :direccionCalle")
-    , @NamedQuery(name = "Inmuebles.findByDireccionNumero", query = "SELECT i FROM Inmuebles i WHERE i.direccionNumero = :direccionNumero")
-    , @NamedQuery(name = "Inmuebles.findByDireccionPiso", query = "SELECT i FROM Inmuebles i WHERE i.direccionPiso = :direccionPiso")
-    , @NamedQuery(name = "Inmuebles.findByDireccionLetra", query = "SELECT i FROM Inmuebles i WHERE i.direccionLetra = :direccionLetra")
-    , @NamedQuery(name = "Inmuebles.findByDireccionEscalera", query = "SELECT i FROM Inmuebles i WHERE i.direccionEscalera = :direccionEscalera")
     , @NamedQuery(name = "Inmuebles.findByPrecioCompra", query = "SELECT i FROM Inmuebles i WHERE i.precioCompra = :precioCompra")
     , @NamedQuery(name = "Inmuebles.findByPrecioAlquiler", query = "SELECT i FROM Inmuebles i WHERE i.precioAlquiler = :precioAlquiler")
     , @NamedQuery(name = "Inmuebles.findByPrecioTraspaso", query = "SELECT i FROM Inmuebles i WHERE i.precioTraspaso = :precioTraspaso")
     , @NamedQuery(name = "Inmuebles.findByPrecioAlquilerOpcionCompra", query = "SELECT i FROM Inmuebles i WHERE i.precioAlquilerOpcionCompra = :precioAlquilerOpcionCompra")
-    , @NamedQuery(name = "Inmuebles.findByNHabitaciones", query = "SELECT i FROM Inmuebles i WHERE i.nHabitaciones = :nHabitaciones")
-    , @NamedQuery(name = "Inmuebles.findByNBanos", query = "SELECT i FROM Inmuebles i WHERE i.nBanos = :nBanos")
-    , @NamedQuery(name = "Inmuebles.findByNAseos", query = "SELECT i FROM Inmuebles i WHERE i.nAseos = :nAseos")
-    , @NamedQuery(name = "Inmuebles.findByM2Utiles", query = "SELECT i FROM Inmuebles i WHERE i.m2Utiles = :m2Utiles")
-    , @NamedQuery(name = "Inmuebles.findByM2Construidos", query = "SELECT i FROM Inmuebles i WHERE i.m2Construidos = :m2Construidos")
-    , @NamedQuery(name = "Inmuebles.findByM2Terreno", query = "SELECT i FROM Inmuebles i WHERE i.m2Terreno = :m2Terreno")
-    , @NamedQuery(name = "Inmuebles.findByEstadoConservacion", query = "SELECT i FROM Inmuebles i WHERE i.estadoConservacion = :estadoConservacion")
-    , @NamedQuery(name = "Inmuebles.findByVisible", query = "SELECT i FROM Inmuebles i WHERE i.visible = :visible")
-    , @NamedQuery(name = "Inmuebles.findByZonaDeportiva", query = "SELECT i FROM Inmuebles i WHERE i.zonaDeportiva = :zonaDeportiva")
-    , @NamedQuery(name = "Inmuebles.findByAmueblado", query = "SELECT i FROM Inmuebles i WHERE i.amueblado = :amueblado")
-    , @NamedQuery(name = "Inmuebles.findByGaraje", query = "SELECT i FROM Inmuebles i WHERE i.garaje = :garaje")
-    , @NamedQuery(name = "Inmuebles.findByCalefaccion", query = "SELECT i FROM Inmuebles i WHERE i.calefaccion = :calefaccion")
-    , @NamedQuery(name = "Inmuebles.findByAireAcondicionado", query = "SELECT i FROM Inmuebles i WHERE i.aireAcondicionado = :aireAcondicionado")
-    , @NamedQuery(name = "Inmuebles.findByPiscina", query = "SELECT i FROM Inmuebles i WHERE i.piscina = :piscina")
-    , @NamedQuery(name = "Inmuebles.findByJardin", query = "SELECT i FROM Inmuebles i WHERE i.jardin = :jardin")
-    , @NamedQuery(name = "Inmuebles.findByTrastero", query = "SELECT i FROM Inmuebles i WHERE i.trastero = :trastero")
-    , @NamedQuery(name = "Inmuebles.findByAscensor", query = "SELECT i FROM Inmuebles i WHERE i.ascensor = :ascensor")
-    , @NamedQuery(name = "Inmuebles.findByTerraza", query = "SELECT i FROM Inmuebles i WHERE i.terraza = :terraza")
-    , @NamedQuery(name = "Inmuebles.findByPisoBanco", query = "SELECT i FROM Inmuebles i WHERE i.pisoBanco = :pisoBanco")
-    , @NamedQuery(name = "Inmuebles.findByVpo", query = "SELECT i FROM Inmuebles i WHERE i.vpo = :vpo")
-    , @NamedQuery(name = "Inmuebles.findByReservado", query = "SELECT i FROM Inmuebles i WHERE i.reservado = :reservado")
-    , @NamedQuery(name = "Inmuebles.findByEficienciaEnergeticaTipo", query = "SELECT i FROM Inmuebles i WHERE i.eficienciaEnergeticaTipo = :eficienciaEnergeticaTipo")
-    , @NamedQuery(name = "Inmuebles.findByEficienciaEnergeticaEntramite01", query = "SELECT i FROM Inmuebles i WHERE i.eficienciaEnergeticaEntramite01 = :eficienciaEnergeticaEntramite01")
-    , @NamedQuery(name = "Inmuebles.findByEficienciaEnergeticaFecvalid", query = "SELECT i FROM Inmuebles i WHERE i.eficienciaEnergeticaFecvalid = :eficienciaEnergeticaFecvalid")
-    , @NamedQuery(name = "Inmuebles.findByEficienciaEnergeticaEmisiones", query = "SELECT i FROM Inmuebles i WHERE i.eficienciaEnergeticaEmisiones = :eficienciaEnergeticaEmisiones")
-    , @NamedQuery(name = "Inmuebles.findByOrientacionSolar", query = "SELECT i FROM Inmuebles i WHERE i.orientacionSolar = :orientacionSolar")
-    , @NamedQuery(name = "Inmuebles.findBySuelos", query = "SELECT i FROM Inmuebles i WHERE i.suelos = :suelos")
-    , @NamedQuery(name = "Inmuebles.findByCarpinteriaExterior", query = "SELECT i FROM Inmuebles i WHERE i.carpinteriaExterior = :carpinteriaExterior")
-    , @NamedQuery(name = "Inmuebles.findByCarpinteriaInterior", query = "SELECT i FROM Inmuebles i WHERE i.carpinteriaInterior = :carpinteriaInterior")})
+})
 public class Inmuebles implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    /**
-     * ********************************CARÁCTERISTICAS PROPIAS DE
-     * INMUEBLE***************************************
-     */
     @Basic(optional = false)
     private Long id;
     @Column(name = "referencia_catastral")
@@ -130,8 +88,6 @@ public class Inmuebles implements Serializable {
 
     @Embedded
     private Localizacion localizacion;
-    
-  
 
     public Inmuebles() {
     }

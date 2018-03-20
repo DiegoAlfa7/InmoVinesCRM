@@ -56,7 +56,7 @@ public class Provincias implements Serializable {
     private int capitalId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProvincia")
     private List<Intereses> interesesList;
-    @OneToMany(mappedBy = "idProvincia")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Inmuebles> inmueblesList;
 
     public Provincias() {

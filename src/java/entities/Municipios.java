@@ -59,7 +59,7 @@ public class Municipios implements Serializable {
     private List<Zonas> zonasList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMunicipio")
     private List<Intereses> interesesList;
-    @OneToMany(mappedBy = "idMunicipios")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Inmuebles> inmueblesList;
 
     public Municipios() {

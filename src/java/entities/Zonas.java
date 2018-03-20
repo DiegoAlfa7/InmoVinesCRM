@@ -9,6 +9,7 @@ import entities.inmuebles.Inmuebles;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,7 +52,7 @@ public class Zonas implements Serializable {
     @JoinColumn(name = "id_municipio", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Municipios idMunicipio;
-    @OneToMany(mappedBy = "idZona")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Inmuebles> inmueblesList;
 
     public Zonas() {
