@@ -14,6 +14,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,23 +41,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Clientes.findAll", query = "SELECT c FROM Clientes c")
     , @NamedQuery(name = "Clientes.findById", query = "SELECT c FROM Clientes c WHERE c.id = :id")
-    , @NamedQuery(name = "Clientes.findByNombre", query = "SELECT c FROM Clientes c WHERE c.nombre = :nombre")
-    , @NamedQuery(name = "Clientes.findByApellidos", query = "SELECT c FROM Clientes c WHERE c.apellidos = :apellidos")
-    , @NamedQuery(name = "Clientes.findByMail", query = "SELECT c FROM Clientes c WHERE c.mail = :mail")
     , @NamedQuery(name = "Clientes.findByInquilino", query = "SELECT c FROM Clientes c WHERE c.inquilino = :inquilino")
     , @NamedQuery(name = "Clientes.findByArrendatario", query = "SELECT c FROM Clientes c WHERE c.arrendatario = :arrendatario")
     , @NamedQuery(name = "Clientes.findByComprador", query = "SELECT c FROM Clientes c WHERE c.comprador = :comprador")
     , @NamedQuery(name = "Clientes.findByVendedor", query = "SELECT c FROM Clientes c WHERE c.vendedor = :vendedor")
-    , @NamedQuery(name = "Clientes.findByTelefono", query = "SELECT c FROM Clientes c WHERE c.telefono = :telefono")
-    , @NamedQuery(name = "Clientes.findByTelefono1", query = "SELECT c FROM Clientes c WHERE c.telefono1 = :telefono1")
-    , @NamedQuery(name = "Clientes.findByMail1", query = "SELECT c FROM Clientes c WHERE c.mail1 = :mail1")
     , @NamedQuery(name = "Clientes.findByFechaEntrada", query = "SELECT c FROM Clientes c WHERE c.fechaEntrada = :fechaEntrada")
     , @NamedQuery(name = "Clientes.findByPresupuestoMin", query = "SELECT c FROM Clientes c WHERE c.presupuestoMin = :presupuestoMin")
     , @NamedQuery(name = "Clientes.findByPresupuestoMax", query = "SELECT c FROM Clientes c WHERE c.presupuestoMax = :presupuestoMax")
-    , @NamedQuery(name = "Clientes.findByDni", query = "SELECT c FROM Clientes c WHERE c.dni = :dni")
-    , @NamedQuery(name = "Clientes.findByCanalEntrada", query = "SELECT c FROM Clientes c WHERE c.canalEntrada = :canalEntrada")
-    , @NamedQuery(name = "Clientes.findByNacionalidad", query = "SELECT c FROM Clientes c WHERE c.nacionalidad = :nacionalidad")
-    , @NamedQuery(name = "Clientes.findByEdad", query = "SELECT c FROM Clientes c WHERE c.edad = :edad")})
+    , @NamedQuery(name = "Clientes.findByCanalEntrada", query = "SELECT c FROM Clientes c WHERE c.canalEntrada = :canalEntrada")})
 public class Clientes implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,10 +56,9 @@ public class Clientes implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Long id;
-    
+    @Embedded
     private DatosPersonales datosPersonales;
-    
-    
+
     @Basic(optional = false)
     private boolean inquilino;
     @Basic(optional = false)
@@ -76,7 +67,7 @@ public class Clientes implements Serializable {
     private boolean comprador;
     @Basic(optional = false)
     private boolean vendedor;
-    
+
     @Lob
     private String comentarios;
     @Column(name = "fecha_entrada")
@@ -88,7 +79,7 @@ public class Clientes implements Serializable {
     private BigInteger presupuestoMax;
     @Column(name = "canal_entrada")
     private Short canalEntrada;
-    
+
     @JoinColumn(name = "id_agente", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Agentes idAgente;
@@ -149,7 +140,6 @@ public class Clientes implements Serializable {
 //    public void setMail(String mail) {
 //        this.mail = mail;
 //    }
-
     public boolean getInquilino() {
         return inquilino;
     }
@@ -205,7 +195,6 @@ public class Clientes implements Serializable {
 //    public void setMail1(String mail1) {
 //        this.mail1 = mail1;
 //    }
-
     public String getComentarios() {
         return comentarios;
     }
@@ -245,7 +234,6 @@ public class Clientes implements Serializable {
 //    public void setDni(String dni) {
 //        this.dni = dni;
 //    }
-
     public Short getCanalEntrada() {
         return canalEntrada;
     }
@@ -269,7 +257,6 @@ public class Clientes implements Serializable {
 //    public void setEdad(Integer edad) {
 //        this.edad = edad;
 //    }
-
     public Agentes getIdAgente() {
         return idAgente;
     }
@@ -336,5 +323,5 @@ public class Clientes implements Serializable {
     public String toString() {
         return "entities.cliente.Clientes[ id=" + id + " ]";
     }
-    
+
 }

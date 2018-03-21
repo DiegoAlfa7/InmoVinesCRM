@@ -31,7 +31,6 @@ public class Localizacion {
     @JoinColumn(name = "id_municipios", referencedColumnName = "ID")
     @ManyToOne
     private Municipios municipio;
-
     @JoinColumn(name = "id_provincia", referencedColumnName = "ID")
     @ManyToOne
     private Provincias provincia;
